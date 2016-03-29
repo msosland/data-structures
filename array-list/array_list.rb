@@ -1,4 +1,4 @@
-require_relative 'fixed_array'
+require_relative '../fixed-arrays/fixed_array'
 
 class ArrayList
   attr_reader :length
