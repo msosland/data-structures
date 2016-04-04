@@ -44,4 +44,28 @@ describe LinkedList do
       expect(ll1.first_node).to eq nil
     end
   end
+
+  describe '#insert_last' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new('b')}
+    let(:node3){Node.new('c')}
+    it 'sets the first node to the new node if the list is empty' do
+      expect(ll1.first_node).to eq nil
+      ll1.insert_first(node1)
+      expect(ll1.first_node).to eq node1
+    end
+
+    it 'places new element on the end when list is not empty' do
+      expect(ll1.first_node).to eq nil
+      ll1.insert_first(node1)
+      expect(ll1.first_node).to eq node1
+      ll1.insert_first(node2)
+      expect(ll1.first_node).to eq node2
+      ll1.insert_last(node3)
+      expect(ll1.first_node.next_node.next_node).to eq node3
+    end
+  end
+
+
+
 end

@@ -22,7 +22,12 @@ class LinkedList
   end
 
   def insert_last(element)
-
+    if @first_node == nil
+      insert_first(element)
+    else
+      old_last_node = find_last_node
+      old_last_node.insert_after(element)
+    end
   end
 
   def remove_last
