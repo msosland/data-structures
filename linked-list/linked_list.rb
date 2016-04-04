@@ -2,16 +2,20 @@ require_relative 'node'
 
 class LinkedList
 
-  attr_accessor :first_node
+  attr_accessor :first_node, :size
+
 
   def initialize
     @first_node = nil
+    @size = 0
   end
 
+  # this element is a node
   def insert_first(element)
     temp = @first_node
     element.insert_after(temp)
     @first_node = element
+    @size += 1
   end
 
   def remove_first
@@ -19,45 +23,58 @@ class LinkedList
     temp = @first_node.next_node
     @first_node.next_node = nil
     @first_node = temp
+    @size -= 1
   end
 
+  # this element is a node
   def insert_last(element)
     if @first_node == nil
       insert_first(element)
+      @size += 1
     else
       old_last_node = find_last_node
       old_last_node.insert_after(element)
+      @size += 1
     end
   end
 
   def get(index)
-
-  end
-
-  def set
-  end
-
-  def insert
-  end
-
-  def size
-    return 0 if @first_node == nil
-    counter = 1
+    raise IndexError if index < 0 || index > (size - 1)
     pointer = @first_node
-    while pointer.next_node != nil
+    index.times do |i|
       pointer = pointer.next_node
-      counter += 1
     end
-    return counter
+    return pointer
+  end
+
+  # this element is an object
+  def set(index, element)
+    node_at_index = get(index)
+    node_at_index.element = element
+  end
+
+  # this element is a node
+  def insert(index, element)
+    if index == 0
+      insert_first(element)
+    else
+      node_before_index = get(index - 1)
+      node_at_index = get(index)
+      node_before_index.next_node = element
+      element.next_node = node_at_index
+      @size += 1
+    end
   end
 
   def remove_last
     return nil if @first_node == nil
     if @first_node.next_node == nil
       @first_node = nil
+      @size -= 1
     else
       second_to_last = find_second_to_last_node
       second_to_last.remove_after
+      @size -= 1
     end
   end
 
