@@ -91,6 +91,27 @@ describe LinkedList do
     end
   end
 
+  describe '#size' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new('b')}
+    let(:node3){Node.new('c')}
+    it 'returns 0 if list is empty' do
+      expect(ll1.size).to eq 0
+    end
+
+    it 'returns 1 if list has one element' do
+      ll1.insert_first(node1)
+      expect(ll1.size).to eq 1
+    end
+
+    it 'returns correct size if list has multiple elements' do
+      ll1.insert_first(node1)
+      ll1.insert_first(node2)
+      ll1.insert_first(node3)
+      expect(ll1.size).to eq 3
+    end
+  end
+
 
 
 

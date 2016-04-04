@@ -30,6 +30,27 @@ class LinkedList
     end
   end
 
+  def get(index)
+
+  end
+
+  def set
+  end
+
+  def insert
+  end
+
+  def size
+    return 0 if @first_node == nil
+    counter = 1
+    pointer = @first_node
+    while pointer.next_node != nil
+      pointer = pointer.next_node
+      counter += 1
+    end
+    return counter
+  end
+
   def remove_last
     return nil if @first_node == nil
     if @first_node.next_node == nil
