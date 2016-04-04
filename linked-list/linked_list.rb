@@ -8,6 +8,7 @@ class LinkedList
     @first_node = nil
   end
 
+  # this element is a node
   def insert_first(element)
     temp = @first_node
     element.insert_after(temp)
@@ -21,6 +22,7 @@ class LinkedList
     @first_node = temp
   end
 
+  # this element is a node
   def insert_last(element)
     if @first_node == nil
       insert_first(element)
@@ -31,13 +33,30 @@ class LinkedList
   end
 
   def get(index)
-
+    raise IndexError if index < 0 || index > (size - 1)
+    pointer = @first_node
+    index.times do |i|
+      pointer = pointer.next_node
+    end
+    return pointer
   end
 
-  def set
+  # this element is an object
+  def set(index, element)
+    node_at_index = get(index)
+    node_at_index.element = element
   end
 
-  def insert
+  # this element is a node
+  def insert(index, element)
+    if index == 0
+      insert_first(element)
+    else
+      node_before_index = get(index - 1)
+      node_at_index = get(index)
+      node_before_index.next_node = element
+      element.next_node = node_at_index
+    end
   end
 
   def size

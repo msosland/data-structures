@@ -112,6 +112,65 @@ describe LinkedList do
     end
   end
 
+  describe '#get(index)' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new("b")}
+    it 'returns an Index Error if index is invalid' do
+      expect{ll1.get(-2)}.to raise_error IndexError
+    end
+
+    it 'returns an Index Error if index is too high' do
+      expect{ll1.get(5)}.to raise_error IndexError
+    end
+
+    it 'returns the correct node when the ll is one element' do
+      ll1.insert_first(node1)
+      expect(ll1.get(0)).to eq node1
+    end
+
+    it 'returns the correct node when the ll is multiple elements' do
+      ll1.insert_first(node1)
+      ll1.insert_first(node2)
+      expect(ll1.get(1)).to eq node1
+    end
+  end
+
+  describe '#set' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new('b')}
+    let(:node3){Node.new('c')}
+    it 'throws an error if the index is invalid' do
+      expect{ll1.set(-3, 'this')}.to raise_error IndexError
+    end
+
+    it 'correctly sets element' do
+      ll1.insert_first(node1)
+      expect(ll1.get(0).element).to eq 'a'
+      ll1.set(0, 'this')
+      expect(ll1.get(0).element).to eq 'this'
+    end
+  end
+
+  describe '#insert' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new('b')}
+    let(:node3){Node.new('c')}
+
+    it 'throws an error if index is invalid' do
+      expect{ll1.insert(-3, 'this')}.to raise_error IndexError
+    end
+
+    it 'correctly inserts element' do
+      ll1.insert_first(node1)
+      ll1.insert_first(node2)
+      expect(ll1.get(0)).to eq node2
+      expect(ll1.get(1)).to eq node1
+      ll1.insert(1, node3)
+      expect(ll1.get(0)).to eq node2
+      expect(ll1.get(1)).to eq node3
+      expect(ll1.get(2)).to eq node1
+    end
+  end
 
 
 
