@@ -15,6 +15,7 @@ class LinkedList
   end
 
   def remove_first
+    return nil if @first_node == nil
     temp = @first_node.next_node
     @first_node.next_node = nil
     @first_node = temp

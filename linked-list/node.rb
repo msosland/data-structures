@@ -10,9 +10,7 @@ class Node
   end
 
   def remove_after
-    temp = @next_node.next_node
-    @next_node.next_node = nil
-    @next_node = temp
+    @next_node = nil
   end
 
 end

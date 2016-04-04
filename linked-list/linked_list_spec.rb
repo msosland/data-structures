@@ -22,7 +22,7 @@ describe LinkedList do
       expect(ll1.first_node).to eq node1
       ll1.insert_first(node2)
       expect(ll1.first_node).to eq node2
-      expect(node2.next_node).to eq node1
+      expect(ll1.first_node.next_node).to eq node1
     end
   end
 
