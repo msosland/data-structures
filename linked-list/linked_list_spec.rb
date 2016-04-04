@@ -66,6 +66,33 @@ describe LinkedList do
     end
   end
 
+  describe '#remove_last' do
+    let(:node1){Node.new("a")}
+    let(:node2){Node.new('b')}
+    let(:node3){Node.new('c')}
+    it 'returns nil if list is empty' do
+      expect(ll1.remove_last).to eq nil
+    end
+
+    it 'empties list if list is only one node' do
+      ll1.insert_first(node1)
+      expect(ll1.first_node).to eq node1
+      ll1.remove_last
+      expect(ll1.first_node).to eq nil
+    end
+
+    it 'removes last element for all other list sizes' do
+      ll1.insert_first(node1)
+      ll1.insert_first(node2)
+      ll1.insert_first(node3)
+      expect(ll1.first_node.next_node.next_node).to eq node1
+      ll1.remove_last
+      expect(ll1.first_node.next_node.next_node).to eq nil
+    end
+  end
+
+
+
 
 
 end

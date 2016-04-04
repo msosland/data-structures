@@ -31,17 +31,34 @@ class LinkedList
   end
 
   def remove_last
+    return nil if @first_node == nil
+    if @first_node.next_node == nil
+      @first_node = nil
+    else
+      second_to_last = find_second_to_last_node
+      second_to_last.remove_after
+    end
   end
 
   private
   def find_last_node
-    return @first_node if @first_node == nil
+    # since this is a private method and i am only calling it after checking if the first node != nil, I do not need that check here
     traveler = @first_node
     while traveler.next_node != nil
       traveler = traveler.next_node
     end
     return traveler
   end
+
+  def find_second_to_last_node
+    # since this is private and i am only calling it after checking that there are multiple nodes, i do not need that check here
+    traveler = @first_node
+    while traveler.next_node.next_node != nil
+      traveler = traveler.next_node
+    end
+    return traveler
+  end
+
 
 
 end
