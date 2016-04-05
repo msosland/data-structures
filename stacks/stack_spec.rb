@@ -24,4 +24,25 @@ describe Stack do
     end
   end
 
+  describe '#pop' do
+    it 'returns nil if the stack is empty' do
+      expect(s1.pop).to eq nil
+    end
+
+    it 'returns the only element if the stack only has one element' do
+      s1.push("this")
+      popped = s1.pop
+      expect(popped).to be_a(Node)
+      expect(popped.element).to eq "this"
+      expect(s1.pop).to eq nil
+    end
+
+    it 'returns the last element when the stack has multiple elements' do
+      s1.push('this')
+      s1.push('that')
+      popped = s1.pop
+      expect(popped.element).to eq 'that'
+    end
+  end
+
 end

@@ -13,6 +13,7 @@ class Stack
   end
 
   def pop
+    @stack.remove_last
   end
 
   def top
