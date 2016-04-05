@@ -17,6 +17,7 @@ class Stack
   end
 
   def top
+    return find_last_node
   end
 
   def empty?
@@ -24,7 +25,7 @@ class Stack
 
   private
   def find_last_node
-    # since this is a private method and i am only calling it after checking if the first node != nil, I do not need that check here
+    return nil if @stack.first_node == nil
     traveler = @stack.first_node
     while traveler.next_node != nil
       traveler = traveler.next_node

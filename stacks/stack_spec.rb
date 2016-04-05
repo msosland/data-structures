@@ -45,4 +45,23 @@ describe Stack do
     end
   end
 
+  describe '#top' do
+    it 'returns nil if the stack is empty' do
+      expect(s1.top).to eq nil
+    end
+
+    it 'returns the element if the stack has only one element' do
+      s1.push('this')
+      expect(s1.top).to be_a(Node)
+      expect(s1.top.element).to eq 'this'
+    end
+
+    it 'returns the last element if the stack has multiple multiple elements' do
+      s1.push('this')
+      s1.push('that')
+      expect(s1.top).to be_a(Node)
+      expect(s1.top.element).to eq 'that'
+    end
+  end
+
 end
