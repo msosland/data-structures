@@ -30,7 +30,6 @@ class LinkedList
   def insert_last(element)
     if @first_node == nil
       insert_first(element)
-      @size += 1
     else
       old_last_node = find_last_node
       old_last_node.insert_after(element)
@@ -69,12 +68,16 @@ class LinkedList
   def remove_last
     return nil if @first_node == nil
     if @first_node.next_node == nil
+      old_first = @first_node
       @first_node = nil
       @size -= 1
+      return old_first
     else
+      old_last = find_last_node
       second_to_last = find_second_to_last_node
       second_to_last.remove_after
       @size -= 1
+      return old_last
     end
   end
 
