@@ -3,7 +3,6 @@ require_relative '../linked-list/linked_list'
 class Stack
 
   attr_accessor :stack
-
   def initialize
     @stack = LinkedList.new
   end
