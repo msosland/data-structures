@@ -64,4 +64,14 @@ describe Stack do
     end
   end
 
+  describe '#empty?' do
+    it 'returns true when the stack is empty' do
+      expect(s1.empty?).to eq true
+    end
+
+    it 'returns false when the stack has elements' do
+      s1.push('this')
+      expect(s1.empty?).to eq false
+    end
+  end
 end

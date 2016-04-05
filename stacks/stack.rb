@@ -21,6 +21,7 @@ class Stack
   end
 
   def empty?
+    @stack.first_node == nil
   end
 
   private
