@@ -10,6 +10,18 @@ describe Queue do
   end
 
   describe '#enqueue' do
+    it 'adds a new element to an empty queue' do
+      q1.enqueue("this")
+      expect(q1.queue.first_node).to be_a(Node)
+      expect(q1.queue.first_node.element).to eq "this"
+    end
+
+    it 'adds an element to the end when the queue has existing elements' do
+      q1.enqueue('this')
+      q1.enqueue('that')
+      expect(q1.queue.first_node.element).to eq 'this'
+      expect(q1.queue.first_node.next_node.element).to eq 'that'
+    end
   end
 
   describe '#dequeue' do
