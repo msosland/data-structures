@@ -12,6 +12,7 @@ class Queue
   end
 
   def dequeue
+    @queue.remove_first
   end
 
   def peel

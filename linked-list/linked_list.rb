@@ -20,10 +20,13 @@ class LinkedList
 
   def remove_first
     return nil if @first_node == nil
-    temp = @first_node.next_node
+    old_first = @first_node
+    old_second = @first_node.next_node
     @first_node.next_node = nil
-    @first_node = temp
+    @first_node = old_second
     @size -= 1
+    old_first.next_node = nil
+    return old_first
   end
 
   # this element is a node
