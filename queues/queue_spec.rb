@@ -40,7 +40,7 @@ describe Queue do
     it 'returns the first element in queue of multiple elements' do
       q1.enqueue('this')
       q1.enqueue('that')
-      dequeued = q1.enqueue
+      dequeued = q1.dequeue
       expect(dequeued.element).to eq 'this'
     end
   end
