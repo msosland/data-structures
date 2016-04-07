@@ -25,6 +25,24 @@ describe Queue do
   end
 
   describe '#dequeue' do
+    it 'returns nil if the queue is empty' do
+      expect(q1.dequeue).to be nil
+    end
+
+    it 'returns the only element if the queue has only one element' do
+      q1.enqueue('this')
+      dequeued = q1.dequeue
+      expect(dequeued).to be_a(Node)
+      expect(dequeued.element).to eq 'this'
+      expect(q1.dequeue).to be nil
+    end
+
+    it 'returns the first element in queue of multiple elements' do
+      q1.enqueue('this')
+      q1.enqueue('that')
+      dequeued = q1.enqueue
+      expect(dequeued.element).to eq 'this'
+    end
   end
 
   describe '#peel' do

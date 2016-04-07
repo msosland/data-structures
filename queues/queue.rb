@@ -12,6 +12,7 @@ class Queue
   end
 
   def dequeue
+
   end
 
   def peel
