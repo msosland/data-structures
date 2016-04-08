@@ -46,6 +46,21 @@ describe Queue do
   end
 
   describe '#peel' do
+    it 'returns nil when the queue is empty' do
+      expect(q1.peel).to eq nil
+    end
+
+    it 'returns the first node when the queue has one node' do
+      q1.enqueue('this')
+      expect(q1.peel).to be_a(Node)
+      expect(q1.peel.element).to eq 'this'
+    end
+
+    it 'returns the first node when the queue has multiple nodes' do
+      q1.enqueue('this')
+      q1.enqueue('that')
+      expect(q1.peel.element).to eq 'this'
+    end
   end
 
   describe '#empty?' do

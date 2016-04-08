@@ -16,6 +16,7 @@ class Queue
   end
 
   def peel
+    @queue.first_node
   end
 
   def empty?
