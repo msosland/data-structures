@@ -20,5 +20,6 @@ class Queue
   end
 
   def empty?
+    @queue.first_node == nil
   end
 end

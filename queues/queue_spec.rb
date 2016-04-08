@@ -64,6 +64,14 @@ describe Queue do
   end
 
   describe '#empty?' do
+    it 'returns true if the queue is empty' do
+      expect(q1.empty?).to be true
+    end
+
+    it 'returns false when the queue has elements' do
+      q1.enqueue('this')
+      expect(q1.empty?).to be false
+    end
   end
 
 
