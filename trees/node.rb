@@ -10,6 +10,7 @@ class Node
   end
 
   def add_child(child)
+    @child_nodes.add(child)
   end
 
 end
