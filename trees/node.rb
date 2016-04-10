@@ -2,15 +2,15 @@ require_relative '../array-list/array_list'
 
 class Node
 
-  attr_reader :value, :child_nodes
+  attr_reader :value, :children
 
   def initialize(value)
     @value = value
-    @child_nodes = ArrayList.new(4)
+    @children = ArrayList.new(0)
   end
 
   def add_child(child)
-    @child_nodes.add(child)
+    @children.add(child)
   end
 
 end
