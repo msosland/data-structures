@@ -32,7 +32,8 @@ class ArrayList
       @length += 1
       return element
     else
-      raise IndexOutOfBoundsError
+      increase_size
+      add(element)
     end
   end
 
@@ -40,6 +41,7 @@ class ArrayList
     if index > @length || index < 0
       raise IndexOutOfBoundsError
     else
+      increase_size if @length == @size
       adjust(index)
       @array.set(index, element)
       element
@@ -51,10 +53,22 @@ class ArrayList
   def adjust(index)
     counter = @length - 1
     add("placeholder")
-    while counter > index
+    while counter >= index
       @array.set(counter + 1, @array.get(counter))
       counter -= 1
     end
+  end
+
+  def increase_size
+    if @size > 0
+      grown_array = FixedArray.new(@size * 2)
+    else
+      grown_array = FixedArray.new(2)
+    end
+    0.upto(@length - 1) do |i|
+      grown_array.set(i, @array.get(i))
+    end
+    @array = grown_array
   end
 
 
