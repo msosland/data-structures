@@ -1,7 +1,7 @@
 require_relative '../fixed-arrays/fixed_array'
 
 class ArrayList
-  attr_reader :length
+  attr_reader :length, :size
 
   def initialize(size = 16)
     @size = size

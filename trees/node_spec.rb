@@ -10,6 +10,8 @@ describe Node do
 
     it 'instantiates an empty collection of child nodes' do
       expect(n1.child_nodes).to be_a ArrayList
+      expect(n1.child_nodes.size).to eq 0
+      expect(n1.child_nodes.length).to eq 0
     end
   end
 
