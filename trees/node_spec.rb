@@ -10,7 +10,6 @@ describe Node do
 
     it 'instantiates an empty collection of child nodes' do
       expect(n1.children).to be_a ArrayList
-      expect(n1.children.size).to eq 0
       expect(n1.children.length).to eq 0
     end
   end
@@ -21,7 +20,19 @@ describe Node do
       n1.add_child(n2)
       expect(n1.children.length).to eq 1
     end
-
   end
+
+  describe '#children' do
+    let(:n3){Node.new('child')}
+    let(:n4){Node.new('child')}
+    it 'returns the collection of child nodes' do 
+      n1.add_child(n2)
+      n1.add_child(n3)
+      n1.add_child(n4)
+      expect(n1.children).to be_a ArrayList
+      expect(n1.children.length).to eq 3
+    end
+  end
+
 
 end
