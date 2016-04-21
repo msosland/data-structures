@@ -22,19 +22,16 @@ class ArrayList
       raise IndexOutOfBoundsError
     else
       @array.set(index, element)
-      return element
     end
   end
 
   def add(element)
-    if @length < @array.size
-      @array.set(@length, element)
-      @length += 1
-      return element
-    else
-      increase_size
-      add(element)
-    end
+    increase_size if @array.size == @length
+    @array.set(@length, element)
+    p size
+    p length
+    @length += 1
+    element
   end
 
   def insert(index, element)
@@ -60,11 +57,7 @@ class ArrayList
   end
 
   def increase_size
-    if @size > 0
-      grown_array = FixedArray.new(@size * 2)
-    else
-      grown_array = FixedArray.new(2)
-    end
+    grown_array = FixedArray.new(@size * 2)
     0.upto(@length - 1) do |i|
       grown_array.set(i, @array.get(i))
     end

@@ -6,7 +6,7 @@ class Node
 
   def initialize(value)
     @value = value
-    @children = ArrayList.new(0)
+    @children = ArrayList.new()
   end
 
   def add_child(child)
