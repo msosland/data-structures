@@ -10,5 +10,8 @@ class Node
 		@edges << other_node
 	end
 
+	def nodes
+		@edges
+	end
 
 end
